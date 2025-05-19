@@ -2,19 +2,16 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>Escape from Hell - DOS 게임</title>
-  <script src="js-dos.js"></script>
-  <style>
-    body { background-color: black; margin: 0; padding: 0; }
-    #dos { width: 640px; height: 400px; margin: 0 auto; }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escape from Hell</title>
 </head>
 <body>
   <div id="dos"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/js-dos@8.0.0"></script>
   <script>
     Dos(document.getElementById("dos"), {
-      wdosboxUrl: "wdosbox.js",
-      bundleUrl: "game.zip"
+      bundleUrl: "bundle.jsdos"
     });
   </script>
 </body>
