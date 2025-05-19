@@ -1,18 +1,34 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="kor">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Escape from Hell</title>
+
+<title>삼국지3</title>
+
+<style>
+html, body {
+height: 100%;
+}
+
+#dos {
+width: 100%;
+height: 100%;
+}
+</style>
+
+<!-- js-dos style sheet -->
+<link rel="stylesheet" href="https://v8.js-dos.com/latest/js-dos.css">
+
+<!-- js-dos -->
+<script src="https://v8.js-dos.com/latest/js-dos.js"></script>
 </head>
 <body>
-  <div id="dos"></div>
 
-  <script src="https://cdn.jsdelivr.net/npm/js-dos@8.0.0"></script>
-  <script>
-    Dos(document.getElementById("dos"), {
-      bundleUrl: "bundle.jsdos"
-    });
-  </script>
+<div id="dos" style="width: 100%; height: 100%"></div>
+
+<script>
+Dos(document.getElementById("dos"), {
+url: "https://github.com/EggLaim/escape-from-hell/bundle.jsdos",
+})
+</script>
 </body>
 </html>
