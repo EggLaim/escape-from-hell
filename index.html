@@ -1,65 +1,71 @@
 <!DOCTYPE html>
-
- 
+<html lang="ko">
 
 <head>
-
-    
-
+    <meta charset="UTF-8">
     <title>게임 타이틀</title>
-
- 
-
     <style>
-
         html, body {
-
             height: 100%;
-
+            margin: 0;
         }
-
- 
 
         #dos {
-
             width: 100%;
-
             height: 100%;
-
+            display: none; /* 게임 화면은 처음에 숨겨둡니다 */
         }
 
+        #startButton {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        #startButton:hover {
+            background-color: #45a049;
+        }
     </style>
 
- 
-
-    <!-- js-dos style sheet -->
-
+    <!-- js-dos 스타일 시트 -->
     <link rel="stylesheet" href="https://egglaim.github.io/escape-from-hell/js-dos.css">
 
-
-
-    <!-- js-dos -->
-
+    <!-- js-dos 스크립트 -->
     <script src="https://egglaim.github.io/escape-from-hell/js-dos.js"></script>
-
 </head>
 
 <body>
 
- 
+    <!-- 게임이 시작되기 전 보일 시작 버튼 -->
+    <button id="startButton" onclick="startGame()">Game Start</button>
 
-    <div id="dos" style="width: 100%; height: 100%"></div>
-
- 
+    <!-- 게임 화면을 표시할 div -->
+    <div id="dos"></div>
 
     <script>
+        // 게임 시작 함수
+        function startGame() {
+            // 시작 버튼 숨기기
+            document.getElementById('startButton').style.display = 'none';
+            
+            // 게임 화면 표시하기
+            document.getElementById('dos').style.display = 'block';
 
-        Dos(document.getElementById("dos"), {
-
-            url: "https://egglaim.github.io/escape-from-hell/diggerM.jsdos",
-            autoStart: true
-        })
-
+            // 게임 로딩 및 시작
+            Dos(document.getElementById("dos"), {
+                url: "https://egglaim.github.io/escape-from-hell/diggerM.jsdos",
+                autoStart: true
+            });
+        }
     </script>
 
 </body>
