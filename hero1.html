@@ -1,0 +1,128 @@
+   <!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게임 타이틀</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: sans-serif;
+            background-color: #000; /* 게임 느낌 살리기 */
+        }
+
+        #dos {
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        #startButton {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        #startButton:hover {
+            background-color: #45a049;
+        }
+
+        /* 모바일 대응 스타일 */
+        @media (max-width: 600px) {
+            #startButton {
+                font-size: 18px;
+                padding: 12px 24px;
+                width: 80%;
+                max-width: 300px;
+            }
+        }
+
+        /* 사이드바 토글 버튼 스타일 */
+        #sidebarToggle {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 3px 6px;  /* 더 작은 패딩 */
+            font-size: 10px;    /* 더 작은 텍스트 크기 */
+            background-color: #f0f0f0;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 15;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #sidebarToggle:hover {
+            background-color: #ddd;
+        }
+
+        /* 모바일 대응 스타일 */
+        @media (max-width: 600px) {
+            #sidebarToggle {
+                font-size: 8px;   /* 모바일에서 버튼 텍스트 크기 더 작게 */
+                padding: 3px 6px;  /* 모바일에서 버튼 크기 더 작게 */
+            }
+        }
+    </style>
+
+    <!-- js-dos 스타일 시트 -->
+    <link rel="stylesheet" href="https://egglaim.github.io/escape-from-hell/js-dos.css">
+
+    <!-- js-dos 스크립트 -->
+    <script src="https://egglaim.github.io/escape-from-hell/js-dos.js"></script>
+</head>
+
+<body>
+
+    <button id="startButton" onclick="startGame()">게임 시작</button>
+    <button id="sidebarToggle" onclick="toggleSidebar()">사이드 바</button> <!-- 버튼 텍스트 변경 -->
+    <div id="dos"></div>
+
+    <script>
+        let dosProps;  // DosProps를 저장할 변수
+        let isSidebarThin = false; // 사이드바가 얇은지 여부를 추적
+
+        function startGame() {
+            document.getElementById('startButton').style.display = 'none';
+            document.getElementById('dos').style.display = 'block';
+
+            // Dos 객체 초기화
+            dosProps = Dos(document.getElementById("dos"), {
+                url: "https://egglaim.github.io/escape-from-hell/hero1.jsdos",
+                autoStart: true,
+                thinSidebar: isSidebarThin  // 사이드바 크기 설정
+            });
+        }
+
+        function toggleSidebar() {
+            // 사이드바 크기 토글
+            isSidebarThin = !isSidebarThin;
+
+            // 게임 실행 중일 때 사이드바 크기 업데이트
+            if (dosProps) {
+                dosProps.setThinSidebar(isSidebarThin);
+            }
+
+            // 버튼 텍스트 변경
+            if (isSidebarThin) {
+                document.getElementById('sidebarToggle').innerText = '확장';
+            } else {
+                document.getElementById('sidebarToggle').innerText = '축소';
+            }
+        }
+    </script>
+
+</body>
